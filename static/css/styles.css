@@ -23,42 +23,52 @@ footer {
 
 .big-heading {
     color: aliceblue;
-    font-size: 19rem;
+    font-size: 17.5rem;
     text-align: center;
     font-weight: bold;
 }
 
-@media screen and (max-width: 1200px) and (min-width: 800px) {
+@media screen and (max-width: 1200px) and (min-width: 900px) {
   .big-heading {
     font-size: 10rem;
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .big-heading {
-    font-size: 7rem;
+    font-size: 6.5rem;
   }
 }
 
 .home-row {
-    background-color: aliceblue;
-    margin: 10% 0 10%;
+    margin: 8% 0 8%;
+
 }
 
-.hunter {
+.player-image {
     width: 40%;
     position: relative;
     right: 0;
 }
 
 .player-text {
-    position: absolute;
-    right: 0;
+    margin-left: -25%;
 }
 
-.team {
+@media screen and (max-width: 767px) {
+    .player-text {
+        margin-left: 0;
+    }
+}
+
+.team-image {
+    float: right;
     text-align: right;
     width: 75%;
+}
+
+.team-text {
+    text-align: right;
 }
 
 .footer-icon {
