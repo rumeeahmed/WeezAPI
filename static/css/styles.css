@@ -1,11 +1,39 @@
+body {
+
+}
+
+footer {
+    background-color: aliceblue;
+    padding: 2% 2% 2%;
+    text-align: center;
+}
+
+.home-row {
+    margin: 10% 0 10%;
+}
+
 .team {
+    text-align: right;
     width: 75%;
 }
 
 .hunter {
+    text-align: left;
     width: 40%;
 }
 
-.big_heading {
-    font-size: 100px;
+.player-text {
+    position: absolute;
+    right: 0;
+}
+
+.big-heading {
+    color: aliceblue;
+    font-size: 20rem;
+    text-align: center;
+}
+
+.footer-icon {
+    color: black;
+    padding: 1%;
 }
