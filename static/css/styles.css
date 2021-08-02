@@ -1,25 +1,54 @@
 body {
-
+    background-color: black;
 }
 
 footer {
-    background-color: aliceblue;
     padding: 2% 2% 2%;
     text-align: center;
 }
 
+.white {
+    background-color: aliceblue;
+    color: black;
+}
+
+.coloured {
+    background-color: black;
+    color: aliceblue;
+}
+
+.container-fluid {
+    padding: 1% 7%
+}
+
+.big-heading {
+    color: aliceblue;
+    font-size: 19rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1200px) and (min-width: 800px) {
+  .big-heading {
+    font-size: 10rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .big-heading {
+    font-size: 7rem;
+  }
+}
+
 .home-row {
+    background-color: aliceblue;
     margin: 10% 0 10%;
 }
 
-.team {
-    text-align: right;
-    width: 75%;
-}
-
 .hunter {
-    text-align: left;
     width: 40%;
+    position: relative;
+    right: 0;
 }
 
 .player-text {
@@ -27,13 +56,12 @@ footer {
     right: 0;
 }
 
-.big-heading {
-    color: aliceblue;
-    font-size: 20rem;
-    text-align: center;
+.team {
+    text-align: right;
+    width: 75%;
 }
 
 .footer-icon {
-    color: black;
+    color: aliceblue;
     padding: 1%;
 }
