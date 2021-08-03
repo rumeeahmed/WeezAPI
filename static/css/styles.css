@@ -40,31 +40,29 @@ footer {
   }
 }
 
-.home-row {
-    margin: 8% 0 8%;
-
-}
-
-.player-image {
-    width: 40%;
-    position: relative;
-    right: 0;
-}
-
-.player-text {
-    margin-left: -25%;
-}
-
 @media screen and (max-width: 767px) {
     .player-text {
         margin-left: 0;
     }
 }
 
+.home-row {
+    margin: 5% 30% 5%;
+
+}
+
+.player-image {
+    border-radius: 100%;
+    width: 70%;
+}
+
+.player-text {
+
+}
+
 .team-image {
-    float: right;
-    text-align: right;
-    width: 75%;
+    border-radius: 100%;
+    width: 70%;
 }
 
 .team-text {
