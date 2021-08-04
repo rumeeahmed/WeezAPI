@@ -23,6 +23,10 @@ footer {
     padding: 1% 7%
 }
 
+/*
+    Home Page Styling
+*/
+
 .big-heading {
     color: white;
     font-size: 14rem;
@@ -75,6 +79,10 @@ footer {
 .right-text {
     text-align: right;
 }
+
+/*
+    Footer Styling
+*/
 
 .footer-icon {
     color: white;
