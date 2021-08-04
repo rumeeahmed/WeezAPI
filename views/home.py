@@ -7,6 +7,6 @@ class Home(MethodView):
     """
     View that serves the Homepage.
     """
+
     def get(self):
-        year = datetime.now().strftime('%Y')
-        return render_template('home.html', year=year)
+        return render_template('home.html')
