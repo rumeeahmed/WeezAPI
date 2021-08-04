@@ -7,4 +7,4 @@ class Players(MethodView):
     View that serves the Players.
     """
     def get(self):
-        return render_template('home.html')
+        return render_template('players.html')

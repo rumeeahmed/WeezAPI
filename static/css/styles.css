@@ -49,25 +49,30 @@ footer {
 }
 
 .home-row {
-    margin: 5% 30% 5%;
+    margin: 5% 20% 5%;
     align-items: center;
 }
 
-.player-image {
-    width: 70%;
+.home-icon {
+    padding: 0 2%;
+}
+
+.left-image {
+    width: 80%;
     float: left;
 }
 
-.player-text {
-
+.left-imagex {
+    width: 90%;
+    float: left;
 }
 
-.team-image {
-    width: 70%;
+.right-image {
+    width: 80%;
     float: right;
 }
 
-.team-text {
+.right-text {
     text-align: right;
 }
 
