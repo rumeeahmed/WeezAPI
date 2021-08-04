@@ -10,10 +10,10 @@ app.add_url_rule('/players', view_func=Players.as_view('players'))
 
 
 @app.context_processor
-def inject_year():
+def inject_year() -> dict:
     """
     Generate the current year and send it across to all of the templates.
-    :return: a string object that contains the year.
+    :return: a dictionary object that contains the year.
     """
     year = datetime.now().strftime('%Y')
     return dict(year=year)
