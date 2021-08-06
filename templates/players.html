@@ -1,4 +1,41 @@
 {% extends 'base.html' %}
 {% block title %}Players{% endblock %}
 {% block content %}
+    <section id="players" class="white">
+        <div id="players-carousel" class="carousel carousel-dark slide" data-bs-ride="carousel" data-interval="1000">
+            <div class="carousel-inner">
+                <div class="carousel-item container-fluid active">
+                    <h2 class="medium-heading">The Golden God</h2>
+                    <img class="players-image" src="../static/img/homepage/player.png" alt="dog-profile">
+                    <em>Pebbles, New York</em>
+                </div>
+                <div class="carousel-item container-fluid">
+                    <h2 class="medium-heading">Captain Ahmed</h2>
+                    <img class="players-image" src="../static/img/homepage/player.png" alt="lady-profile">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="small-heading">Chihuahua</h3>
+                        </div>
+                        <div class="card-body">
+                            <h2 class="medium-heading card-subtitle mb-2">Free</h2>
+                            <p class="card-text">5 Matches Per Day</p>
+                            <p class="card-text">10 Messages Per Day</p>
+                            <p class="card-text">Unlimited App Usage</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-dark btn-lg btn-block card-link" type="button">View Stats</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#players-carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#players-carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
 {% endblock %}

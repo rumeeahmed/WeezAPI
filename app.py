@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask
 from views.home import Home
 from views.player import Players
 from datetime import datetime
