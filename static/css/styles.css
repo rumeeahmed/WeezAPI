@@ -20,7 +20,7 @@ footer {
 }
 
 .container-fluid {
-    padding: 1% 7%
+    padding: 2% 7%
 }
 
 /*
@@ -86,6 +86,20 @@ footer {
     text-align: right;
 }
 
+/*
+    Players Page
+*/
+
+.card {
+    margin: 5% 20% 5%;
+    text-align: center;
+}
+
+.players-image {
+    border-radius: 50%;
+    width: 40%;
+    padding: 5% 0;
+}
 
 /*
     Footer Styling
