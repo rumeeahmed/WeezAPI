@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <h1 class="big-heading">PL AYERS</h1>
+                    <h1 class="big-heading spaced">PLAYERS</h1>
                 </div>
             </div>
         </div>
@@ -17,18 +17,19 @@
                     {% else %}
                         <div class="carousel-item container-fluid">
                     {% endif %}
-
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="small-heading">{{ player['player'] }}</h3>
                             </div>
                             <div class="card-body">
                                 <img class="players-image" src="../static/img/players/{{ player['player'] }}.jpeg" alt="players-image">
-                                <h2 class="medium-heading card-subtitle mb-2">Total Stats</h2>
+                                <div class="card-text">
+                                    <h2 class="medium-heading card-subtitle mb-2">Total Stats</h2>
                                     <p><i class="fas fa-fire home-icon"></i> Kills</p>
                                     <p><i class="fas fa-skull home-icon"></i> Deaths</p>
                                     <p><i class="fas fa-hands-helping home-icon"></i> Assists</p>
                                     <p><i class="fas fa-star-half-alt home-icon"></i> K/D Ratio</p>
+                                </div>
                                 <div class="d-grid gap-2">
                                     <button class="btn btn-outline-dark btn-lg btn-block card-link" type="button">View Stats</button>
                                 </div>

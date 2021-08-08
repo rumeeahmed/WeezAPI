@@ -4,7 +4,7 @@ import firebase_admin
 
 class WeezBase:
     """
-    Object that handles the connection with the Firebase databse.
+    Object that handles the connection with the Firebase database.
     """
 
     def __init__(self):
