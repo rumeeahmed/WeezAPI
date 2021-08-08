@@ -16,11 +16,16 @@ class Players(MethodView):
         Handle the get request made to this route. Return the details of all the players in the Firebase database.
         :return:
         """
+        print(self.data)
         return render_template('players.html', players=self.players)
 
     def _initialise_database(self):
-        self.data = []
         weezbase = WeezBase()
+        player_data = weezbase.db.collection('players').get()
+        self.players = [player.to_dict() for player in player_data]
+        random.shuffle(self.players)
+
+        self.data = []
         # Retrieve document ID's
         documents = weezbase.db.collection('games').stream()
         for doc in documents:
@@ -28,10 +33,16 @@ class Players(MethodView):
             collections = weezbase.db.collection('games').document(doc.id).collections()
             # Get all the data from the collection add the player_name field and append it.
             for col in collections:
-                stats = col.document('stats').get().to_dict()
-                stats['player_name'] = col.id
-                self.data.append(stats)
-
-        player_data = weezbase.db.collection('players').get()
-        self.players = [player.to_dict() for player in player_data]
-        random.shuffle(self.players)
+                stats = col.document('stats').get()
+                games_played = stats.get('games_played')
+                kills = stats.get('kills')
+                deaths = stats.get('deaths')
+                assists = stats.get('assists')
+                stats_dict = {
+                    'player_name': col.id,
+                    'games_played': games_played,
+                    'kills': kills,
+                    'deaths': deaths,
+                    'assists': assists,
+                }
+                self.data.append(stats_dict)
