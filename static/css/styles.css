@@ -9,6 +9,11 @@ footer {
     text-align: center;
 }
 
+.footer-icon {
+    color: white;
+    padding: 1%;
+}
+
 .white {
     background-color: white;
     color: black;
@@ -94,6 +99,11 @@ footer {
     Players Page
 */
 
+.medium-heading {
+    font-weight: bold;
+    padding: 2% 0;
+}
+
 .card {
     margin: 5% 20% 5%;
     text-align: center;
@@ -101,20 +111,14 @@ footer {
 }
 
 .card-text {
+    display: inline-block;
     text-align: left;
+    margin: auto;
+    width: 200px;
 }
 
 .players-image {
     border-radius: 50%;
     width: 40%;
     padding: 5% 0;
-}
-
-/*
-    Footer Styling
-*/
-
-.footer-icon {
-    color: white;
-    padding: 1%;
 }

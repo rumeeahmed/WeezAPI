@@ -21,18 +21,22 @@
                             <div class="card-header">
                                 <h3 class="medium-heading">{{ player['player'] }}</h3>
                             </div>
-                            <div class="card-body">
-                                <img class="players-image" src="../static/img/players/{{ player['player'] }}.jpeg" alt="players-image">
-                                <div class="card-text">
-                                    <h2 class="medium-heading card-subtitle mb-2">Total Stats</h2>
-                                    <p><i class="fas fa-gamepad home-icon"></i>Games Played: {{ display_stats[player['player']]['games_played'] }}</p>
-                                    <p><i class="fas fa-fire home-icon"></i>Kills: {{ display_stats[player['player']]['kills'] }}</p>
-                                    <p><i class="fas fa-skull home-icon"></i>Deaths: {{ display_stats[player['player']]['deaths'] }}</p>
-                                    <p><i class="fas fa-hands-helping home-icon"></i>Assists: {{ display_stats[player['player']]['assists'] }}</p>
-                                    <p><i class="fas fa-star-half-alt home-icon"></i>K/D Ratio: {{ (display_stats[player['player']]['kills'] / display_stats[player['player']]['deaths'])|round(2) }}</p>
-                                </div>
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-outline-dark btn-lg btn-block card-link" type="button">View Stats</button>
+                            <div class="row">
+                                <div class="card-body">
+                                    <img class="players-image" src="../static/img/players/{{ player['player'] }}.jpeg" alt="players-image">
+                                    <div class="row">
+                                        <div class="card-text">
+                                            <h2 class="medium-heading card-subtitle mb-2">Total Stats</h2>
+                                            <p><i class="fas fa-gamepad home-icon"></i>Games Played: {{ display_stats[player['player']]['games_played'] }}</p>
+                                            <p><i class="fas fa-fire home-icon"></i>Kills: {{ display_stats[player['player']]['kills'] }}</p>
+                                            <p><i class="fas fa-skull home-icon"></i>Deaths: {{ display_stats[player['player']]['deaths'] }}</p>
+                                            <p><i class="fas fa-hands-helping home-icon"></i>Assists: {{ display_stats[player['player']]['assists'] }}</p>
+                                            <p><i class="fas fa-star-half-alt home-icon"></i>K/D Ratio: {{ (display_stats[player['player']]['kills'] / display_stats[player['player']]['deaths'])|round(2) }}</p>
+                                        </div>
+                                        <div class="d-grid gap-2">
+                                            <button class="btn btn-outline-dark btn-lg btn-block card-link" type="button">View {{ player['player'] }}'s Stats</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
