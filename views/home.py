@@ -1,6 +1,5 @@
 from flask import render_template
 from flask.views import MethodView
-from datetime import datetime
 
 
 class Home(MethodView):

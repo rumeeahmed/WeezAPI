@@ -14,13 +14,13 @@
                         <a class="nav-link" href="{{ url_for('players') }}">Players</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Awards</a>
+                        <a class="nav-link" href="{{ url_for('awards') }}">Awards</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Team</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                            <li><a class="dropdown-item" href="#">Total Team Stats</a></li>
-                            <li><a class="dropdown-item" href="#">Team Stats Per Game</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('team_stats') }}">Total Team Stats</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('team_stats_per_game') }}">Team Stats Per Game</a></li>
                         </ul>
                     </li>
                 </ul>
