@@ -53,3 +53,38 @@ class Players(MethodView):
                     'assists': assists,
                 }
                 self.data.append(stats_dict)
+
+    def _process_player_stats(self) -> list[dict]:
+        """
+        Process the raw player data and the statistics together for each player.
+        :return: A list object containing dictionaries for each player and their total stats.
+        """
+        display_stats = []
+        # Iterate over each player and then create a dictionary of stats for the player.
+        for player in self.players:
+            player_dict = {
+                'player_name': player['player'],
+                'games_played': 0,
+                'kills': 0,
+                'deaths': 0,
+                'assists': 0,
+            }
+
+            # Iterate over all the individual match stats and combine them per player and append them to the list.
+            for data in self.data:
+                if data['player_name'] == player['player']:
+                    player_dict['games_played'] += data['games_played']
+                    player_dict['kills'] += data['kills']
+                    player_dict['deaths'] += data['deaths']
+                    player_dict['assists'] += data['assists']
+
+            display_stats.append(player_dict)
+        return display_stats
+
+
+class Player(MethodView):
+    """
+    Object that serves a Player and their data.
+    """
+    def get(self, player_name: str) -> str:
+        pass
