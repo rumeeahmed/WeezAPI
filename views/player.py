@@ -19,7 +19,11 @@ class Players(MethodView):
         print(self.data)
         return render_template('players.html', players=self.players)
 
-    def _initialise_database(self):
+    def _initialise_database(self) -> None:
+        """
+        Initialise the database and retrieve the data to be passed into the Player's template.
+        :return: None
+        """
         weezbase = WeezBase()
         player_data = weezbase.db.collection('players').get()
         self.players = [player.to_dict() for player in player_data]
@@ -33,11 +37,13 @@ class Players(MethodView):
             collections = weezbase.db.collection('games').document(doc.id).collections()
             # Get all the data from the collection add the player_name field and append it.
             for col in collections:
+                # Get the stats in question from the database
                 stats = col.document('stats').get()
                 games_played = stats.get('games_played')
                 kills = stats.get('kills')
                 deaths = stats.get('deaths')
                 assists = stats.get('assists')
+                # Add each individual stat retrieved into a dict for the player.
                 stats_dict = {
                     'player_name': col.id,
                     'games_played': games_played,
