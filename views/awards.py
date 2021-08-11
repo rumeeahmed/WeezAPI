@@ -14,32 +14,8 @@ class Awards(MethodView):
         """
         self._initialise_database()
         awards_length = len(self.data[0])
-        awards_data = self._process_awards_data()
-
-        awards_dict = {
-            'bullet_bitch': [0, ''],
-            'gummy_bear': [0, ''],
-            'head_master': [0, ''],
-            'lethal_killer': [0, ''],
-            'least_lethal_killer': [0, ''],
-            'medic': [0, ''],
-            'pussio': [0, ''],
-            'tank': [0, ''],
-            'team_demolisher': [0, ''],
-            'team_hater': [0, ''],
-            'team_lover': [0, ''],
-            'top_assister': [0, ''],
-        }
-
-        for key, value in awards_data.items():
-            for key2, value2 in value.items():
-                if awards_data[key][key2] > awards_dict[key2][0]:
-                    awards_dict[key2][0] = value2
-                    awards_dict[key2][1] = key
-
-
-
-        return render_template('awards.html', awards_length=awards_length)
+        awards_data = self._count_awards()
+        return render_template('awards.html', awards_length=awards_length, awards_data=awards_data)
 
     def _initialise_database(self) -> None:
         """
@@ -89,3 +65,35 @@ class Awards(MethodView):
 
             data[player['player']] = player_dict
         return data
+
+    def _count_awards(self) -> dict:
+        """
+        Get the processed player awards data and then add them up.
+        :return: a dictionary containing all the added up data for the players.
+        """
+        awards_data = self._process_awards_data()
+        awards_dict = {
+            'bullet_bitch': [0, ''],
+            'gummy_bear': [0, ''],
+            'head_master': [0, ''],
+            'lethal_killer': [0, ''],
+            'least_lethal_killer': [0, ''],
+            'medic': [0, ''],
+            'pussio': [0, ''],
+            'tank': [0, ''],
+            'team_demolisher': [0, ''],
+            'team_hater': [0, ''],
+            'team_lover': [0, ''],
+            'top_assister': [0, ''],
+        }
+
+        # Iterate over the player name and its dictionary value in the awards_data dict.
+        for player_key, awards in awards_data.items():
+            # Iterate over the award key and its value
+            for award_key, award_value in awards.items():
+                # If the value associated with
+                if awards_data[player_key][award_key] > awards_dict[award_key][0]:
+                    awards_dict[award_key][0] = award_value
+                    awards_dict[award_key][1] = player_key
+
+        return awards_dict
