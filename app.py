@@ -1,8 +1,8 @@
-from flask import Flask
 from views.team_stats import TeamStats, TeamStatsPerGame
 from views.player import Players, Player
 from views.awards import Awards
 from views.home import Home
+from flask import Flask
 from datetime import datetime
 
 app = Flask(__name__)
