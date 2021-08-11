@@ -15,6 +15,30 @@ class Awards(MethodView):
         self._initialise_database()
         awards_length = len(self.data[0])
         awards_data = self._process_awards_data()
+
+        awards_dict = {
+            'bullet_bitch': [0, ''],
+            'gummy_bear': [0, ''],
+            'head_master': [0, ''],
+            'lethal_killer': [0, ''],
+            'least_lethal_killer': [0, ''],
+            'medic': [0, ''],
+            'pussio': [0, ''],
+            'tank': [0, ''],
+            'team_demolisher': [0, ''],
+            'team_hater': [0, ''],
+            'team_lover': [0, ''],
+            'top_assister': [0, ''],
+        }
+
+        for key, value in awards_data.items():
+            for key2, value2 in value.items():
+                if awards_data[key][key2] > awards_dict[key2][0]:
+                    awards_dict[key2][0] = value2
+                    awards_dict[key2][1] = key
+
+
+
         return render_template('awards.html', awards_length=awards_length)
 
     def _initialise_database(self) -> None:
