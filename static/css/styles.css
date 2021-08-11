@@ -110,7 +110,7 @@ footer {
     font-weight: bold;
 }
 
-.card-text {
+.player-card-text {
     display: inline-block;
     text-align: left;
     margin: auto;
@@ -122,4 +122,12 @@ footer {
     border-radius: 50%;
     width: 40%;
     padding: 5% 0;
+}
+
+/*
+    Awards Page
+*/
+
+.awards-image {
+    width: 40%;
 }
