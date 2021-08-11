@@ -9,8 +9,8 @@ class Awards(MethodView):
     """
     def get(self) -> str:
         """
-
-        :return:
+        Handle the get request made to this route. Return the details of all awards in the Firebase database.
+        :return: a HTML template.
         """
         self._initialise_database()
         awards_length = len(self.data[0])
@@ -34,6 +34,10 @@ class Awards(MethodView):
             self.data.append(awards)
 
     def _process_awards_data(self) -> dict:
+        """
+        Process the raw data retrieved from firebase and add the count of the awards together for the awards.
+        :return: a dictionary containing a dictionary for each player and the count of the awards received.
+        """
         data = {}
         for player in self.players:
             player_dict = {
@@ -50,6 +54,7 @@ class Awards(MethodView):
                 'team_lover': 0,
                 'top_assister': 0,
             }
+
             for award in self.data:
                 if award['bullet_bitch'] == player['player']:
                     player_dict['bullet_bitch'] += 1

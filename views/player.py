@@ -14,7 +14,7 @@ class Players(MethodView):
     def get(self) -> str:
         """
         Handle the get request made to this route. Return the details of all the players in the Firebase database.
-        :return:
+        :return: a HTML template.
         """
         return render_template('players.html', players=self.players, display_stats=self._process_player_stats())
 
