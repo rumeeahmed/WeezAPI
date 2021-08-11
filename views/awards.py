@@ -55,42 +55,13 @@ class Awards(MethodView):
                 'top_assister': 0,
             }
 
+            # Iterate over the award dicts in the list
             for award in self.data:
-                if award['bullet_bitch'] == player['player']:
-                    player_dict['bullet_bitch'] += 1
-
-                elif award['gummy_bear'] == player['player']:
-                    player_dict['gummy_bear'] += 1
-
-                elif award['head_master'] == player['player']:
-                    player_dict['head_master'] += 1
-
-                elif award['lethal_killer'] == player['player']:
-                    player_dict['lethal_killer'] += 1
-
-                elif award['least_lethal_killer'] == player['player']:
-                    player_dict['lethal_killer'] += 1
-
-                elif award['medic'] == player['player']:
-                    player_dict['medic'] += 1
-
-                elif award['pussio'] == player['player']:
-                    player_dict['pussio'] += 1
-
-                elif award['tank'] == player['player']:
-                    player_dict['tank'] += 1
-
-                elif award['team_demolisher'] == player['player']:
-                    player_dict['team_demolisher'] += 1
-
-                elif award['team_hater'] == player['player']:
-                    player_dict['team_hater'] += 1
-
-                elif award['team_lover'] == player['player']:
-                    player_dict['team_lover'] += 1
-
-                elif award['top_assister'] == player['player']:
-                    player_dict['top_assister'] += 1
+                # Iterate ove the keys in the dicts
+                for key in award.keys():
+                    # If the award key contains players name then add 1 to the value associated award key in player_dict
+                    if award[key] == player['player']:
+                        player_dict[key] += 1
 
             data[player['player']] = player_dict
         return data
