@@ -7,6 +7,7 @@ class Awards(MethodView):
     """
     Object that serves the Awards page.
     """
+
     def get(self) -> str:
         """
         Handle the get request made to this route. Return the details of all awards in the Firebase database.
@@ -91,7 +92,8 @@ class Awards(MethodView):
         for player_key, awards in awards_data.items():
             # Iterate over the award key and its value
             for award_key, award_value in awards.items():
-                # If the value associated with
+                # If the value associated with the award is greater than the one in the awards dict add that value and
+                # its key to corresponding key in the awards dict.
                 if awards_data[player_key][award_key] > awards_dict[award_key][0]:
                     awards_dict[award_key][0] = award_value
                     awards_dict[award_key][1] = player_key
