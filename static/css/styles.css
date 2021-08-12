@@ -1,7 +1,6 @@
 body {
     background-color: black;
     font-family: 'Montserrat', sans-serif;
-
 }
 
 footer {
@@ -104,7 +103,7 @@ footer {
     padding: 2% 0;
 }
 
-.card {
+.player-card {
     margin: 5% 20% 5%;
     text-align: center;
     font-weight: bold;
@@ -129,5 +128,10 @@ footer {
 */
 
 .awards-image {
-    width: 40%;
+    width: 25%;
+}
+
+.awards-card {
+    text-align: center;
+    font-weight: bold;
 }
