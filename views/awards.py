@@ -74,18 +74,18 @@ class Awards(MethodView):
         """
         awards_data = self._process_awards_data()
         awards_dict = {
-            'bullet_bitch': [0, ''],
-            'gummy_bear': [0, ''],
-            'head_master': [0, ''],
-            'lethal_killer': [0, ''],
-            'least_lethal_killer': [0, ''],
-            'medic': [0, ''],
-            'pussio': [0, ''],
-            'tank': [0, ''],
-            'team_demolisher': [0, ''],
-            'team_hater': [0, ''],
-            'team_lover': [0, ''],
-            'top_assister': [0, ''],
+            'bullet_bitch': [0, 'The player that received the most damage.', ''],
+            'gummy_bear': [0, 'The player that requires the least amount of damage taken per death.', ''],
+            'head_master': [0, 'The player with the most headshots.', ''],
+            'lethal_killer': [0, 'The player that accumulates the least amount of damage per kill.', ''],
+            'least_lethal_killer': [0, 'The player that accumulates the most amount of damage per kill.', ''],
+            'medic': [0, 'The player with the most revives.', ''],
+            'pussio': [0, 'The Pussio!', ''],
+            'tank': [0, 'The player that requires the most amount of damage taken per death.', ''],
+            'team_demolisher': [0, 'The player with the most team wipes', ''],
+            'team_hater': [0, 'The player with the lowest score.', ''],
+            'team_lover': [0, 'The player with the highest score.', ''],
+            'top_assister': [0, 'The player with the most assists.', ''],
         }
 
         # Iterate over the player name and its dictionary value in the awards_data dict.
@@ -96,6 +96,6 @@ class Awards(MethodView):
                 # its key to corresponding key in the awards dict.
                 if awards_data[player_key][award_key] > awards_dict[award_key][0]:
                     awards_dict[award_key][0] = award_value
-                    awards_dict[award_key][1] = player_key
+                    awards_dict[award_key][2] = player_key
 
         return awards_dict
