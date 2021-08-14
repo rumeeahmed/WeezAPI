@@ -100,6 +100,15 @@ class Awards(MethodView):
                 # its key to corresponding key in the awards dict.
                 if awards_data[player_key][award_key] > awards_dict[award_key][0]:
                     awards_dict[award_key][0] = award_value
-                    awards_dict[award_key][2] = player_key
+                    awards_dict[award_key][3] = player_key
 
+        # for index, award in enumerate(awards_dict):
+        #     if index % 3 == 0:
+        #         print(award)
+        #         print()
+        #     elif index % 3 == 1:
+        #         print()
+        #         print(award)
+        #     elif index % 3 == 2:
+        #         print(award)
         return awards_dict

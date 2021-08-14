@@ -15,13 +15,13 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
                             <div class="card awards-card">
-                                <div class="card-header">
+                                <div class="card-header coloured">
                                     <h3>{{ awards_data[award][1] }}</h3>
                                 </div>
                                 <div class="card-body">
-                                    <img class="awards-image" src="../static/img/homepage/player.png" alt="players-image">
+                                    <img class="awards-image" src="../static/img/awards/{{ award }}.png" alt="players-image">
                                     <div class="card-text">
-                                        <h2 class="card-subtitle mb-2">NAME</h2>
+                                        <h2 class="card-subtitle mb-2">{{ awards_data[award][3] }}</h2>
                                         <p class="card-subtitle mb-2">DESCRIPTION</p>
                                     </div>
                                     <div class="d-grid gap-2">
@@ -33,13 +33,13 @@
                     {% elif loop.index0 % 3 == 1 %}
                         <div class="col-lg-4 col-md-6">
                             <div class="card awards-card">
-                                <div class="card-header">
+                                <div class="card-header coloured">
                                     <h3>{{ awards_data[award][1] }}</h3>
                                 </div>
                                 <div class="card-body">
-                                    <img class="awards-image" src="../static/img/homepage/player.png" alt="players-image">
+                                    <img class="awards-image" src="../static/img/awards/{{ award }}.png" alt="players-image">
                                     <div class="card-text">
-                                        <h2 class="card-subtitle mb-2">NAME</h2>
+                                        <h2 class="card-subtitle mb-2">{{ awards_data[award][3] }}</h2>
                                         <p class="card-subtitle mb-2">DESCRIPTION</p>
                                     </div>
                                     <div class="d-grid gap-2">
@@ -51,13 +51,13 @@
                     {% elif loop.index0 % 3 == 2 %}
                         <div class="col-lg-4 col-md-6">
                             <div class="card awards-card">
-                                <div class="card-header">
+                                <div class="card-header coloured">
                                     <h3>{{ awards_data[award][1] }}</h3>
                                 </div>
                                 <div class="card-body">
-                                    <img class="awards-image" src="../static/img/homepage/player.png" alt="players-image">
+                                    <img class="awards-image" src="../static/img/awards/{{ award }}.png" alt="players-image">
                                     <div class="card-text">
-                                        <h2 class="card-subtitle mb-2">NAME</h2>
+                                        <h2 class="card-subtitle mb-2">{{ awards_data[award][3] }}</h2>
                                         <p class="card-subtitle mb-2">DESCRIPTION</p>
                                     </div>
                                     <div class="d-grid gap-2">
