@@ -22,7 +22,8 @@
                                     <img class="awards-image" src="../static/img/awards/{{ award }}.png" alt="players-image">
                                     <div class="card-text">
                                         <h2 class="card-subtitle mb-2">{{ awards_data[award][3] }}</h2>
-                                        <p class="card-subtitle mb-2">DESCRIPTION</p>
+                                        <p class="card-subtitle mb-2">{{ awards_data[award][2] }}</p>
+                                        <p class="card-subtitle mb-2">Count: {{ awards_data[award][0] }}/{{ session_count }} nights.</p>
                                     </div>
                                     <div class="d-grid gap-2">
                                         <button class="btn btn-outline-dark btn-lg btn-block card-link" type="button">View's Stats</button>
@@ -40,7 +41,8 @@
                                     <img class="awards-image" src="../static/img/awards/{{ award }}.png" alt="players-image">
                                     <div class="card-text">
                                         <h2 class="card-subtitle mb-2">{{ awards_data[award][3] }}</h2>
-                                        <p class="card-subtitle mb-2">DESCRIPTION</p>
+                                        <p class="card-subtitle mb-2">{{ awards_data[award][2] }}</p>
+                                        <p class="card-subtitle mb-2">Count: {{ awards_data[award][0] }}/{{ session_count }} nights.</p>
                                     </div>
                                     <div class="d-grid gap-2">
                                         <button class="btn btn-outline-dark btn-lg btn-block card-link" type="button">View's Stats</button>
@@ -49,7 +51,7 @@
                             </div>
                         </div>
                     {% elif loop.index0 % 3 == 2 %}
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-4">
                             <div class="card awards-card">
                                 <div class="card-header coloured">
                                     <h3>{{ awards_data[award][1] }}</h3>
@@ -58,7 +60,8 @@
                                     <img class="awards-image" src="../static/img/awards/{{ award }}.png" alt="players-image">
                                     <div class="card-text">
                                         <h2 class="card-subtitle mb-2">{{ awards_data[award][3] }}</h2>
-                                        <p class="card-subtitle mb-2">DESCRIPTION</p>
+                                        <p class="card-subtitle mb-2">{{ awards_data[award][2] }}</p>
+                                        <p class="card-subtitle mb-2">Count: {{ awards_data[award][0] }}/{{ session_count }} nights.</p>
                                     </div>
                                     <div class="d-grid gap-2">
                                         <button class="btn btn-outline-dark btn-lg btn-block card-link" type="button">View's Stats</button>

@@ -14,9 +14,8 @@ class Awards(MethodView):
         :return: a HTML template.
         """
         self._initialise_database()
-        awards_length = len(self.data[0])
         awards_data = self._count_awards()
-        return render_template('awards.html', awards_length=awards_length, awards_data=awards_data)
+        return render_template('awards.html', awards_data=awards_data, session_count=self.session_count)
 
     def _initialise_database(self) -> None:
         """
@@ -29,10 +28,13 @@ class Awards(MethodView):
 
         self.data = []
         documents = weezbase.db.collection('awards').stream()
+
+        self.session_count = 0
         for doc in documents:
             # Use the document ID to get the fields inside the document.
             awards = weezbase.db.collection('awards').document(doc.id).get().to_dict()
             self.data.append(awards)
+            self.session_count += 1
 
     def _process_awards_data(self) -> dict:
         """
@@ -75,17 +77,15 @@ class Awards(MethodView):
         awards_data = self._process_awards_data()
         awards_dict = {
             'bullet_bitch': [0, 'Bullet Bitch', 'The player that received the most damage.', ''],
-            'gummy_bear': [0, 'Gummy Bear', 'The player that requires the least amount of damage taken per death.', ''],
+            'gummy_bear': [0, 'Gummy Bear', 'The player that takes the least damage taken per death.', ''],
             'head_master': [0, 'Headmaster', 'The player with the most headshots.', ''],
-            'lethal_killer': [
-                0, 'Lethal Killer', 'The player that accumulates the least amount of damage per kill.', ''
-            ],
+            'lethal_killer': [0, 'Lethal Killer', 'The player that has the least amount of damage per kill.', ''],
             'least_lethal_killer': [
-                0, 'Least Lethal Killer', 'The player that accumulates the most amount of damage per kill.', ''
+                0, 'Least Lethal Killer', 'The player that has the most amount of damage per kill.', ''
             ],
             'medic': [0, 'Medic', 'The player with the most revives.', ''],
             'pussio': [0, 'Pussio', 'The Pussio!', ''],
-            'tank': [0, 'Tank', 'The player that requires the most amount of damage taken per death.', ''],
+            'tank': [0, 'Tank', 'The player that takes the most damage per death.', ''],
             'team_demolisher': [0, 'Team Demolisher', 'The player with the most team wipes', ''],
             'team_hater': [0, 'Team Hater', 'The player with the lowest score.', ''],
             'team_lover': [0, 'Team Lover', 'The player with the highest score.', ''],
@@ -102,13 +102,4 @@ class Awards(MethodView):
                     awards_dict[award_key][0] = award_value
                     awards_dict[award_key][3] = player_key
 
-        # for index, award in enumerate(awards_dict):
-        #     if index % 3 == 0:
-        #         print(award)
-        #         print()
-        #     elif index % 3 == 1:
-        #         print()
-        #         print(award)
-        #     elif index % 3 == 2:
-        #         print(award)
         return awards_dict
