@@ -10,29 +10,32 @@
             </div>
         </div>
         <div class="container-fluid white">
-            <canvas id="lineChart" width="900" height="400">
-                <script>
-                    const ctx = document.getElementById('lineChart').getContext('2d');
-                    const lineChart = new Chart(ctx, {
-                        type: 'line',
-                        data: {
-                            labels: {{ labels | safe }},
-                            datasets: [
-                                {
-                                    label: 'Kills',
-                                    data : {{ data | safe }},
-                                    fill: true,
-                                    borderColor: 'rgb(0, 0, 0)',
-                                    lineTension: 0.5,
-                                }
-                            ]
-                        },
-                        options: {
-                            responsive: false
-                        }
-                    });
-                </script>
-            </canvas>
+            {% for key, value in data.items() %}
+                <h3>{{ key }}</h3>
+                <canvas id="{{ key }}" width="900" height="400">
+                    <script>
+                        var ctx = document.getElementById('{{key}}').getContext('2d');
+                        var lineChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: {{ labels | safe }},
+                                datasets: [
+                                    {
+                                        label: '{{ key | safe }}',
+                                        data : {{ value | safe }},
+                                        fill: true,
+                                        borderColor: 'rgb(0, 0, 0)',
+                                        lineTension: 0.5,
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: false
+                            }
+                        });
+                    </script>
+                </canvas>
+            {% endfor %}
         </div>
     </section>
 {% endblock %}
