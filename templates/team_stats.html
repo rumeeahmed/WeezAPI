@@ -5,9 +5,34 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <h1 class="big-heading">AWARDS</h1>
+                    <h1 class="big-heading">TEAM STATS</h1>
                 </div>
             </div>
+        </div>
+        <div class="container-fluid white">
+            <canvas id="lineChart" width="900" height="400">
+                <script>
+                    const ctx = document.getElementById('lineChart').getContext('2d');
+                    const lineChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: {{ labels | safe }},
+                            datasets: [
+                                {
+                                    label: 'Kills',
+                                    data : {{ data | safe }},
+                                    fill: true,
+                                    borderColor: 'rgb(0, 0, 0)',
+                                    lineTension: 0.5,
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: false
+                        }
+                    });
+                </script>
+            </canvas>
         </div>
     </section>
 {% endblock %}
