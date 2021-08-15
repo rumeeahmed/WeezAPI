@@ -19,7 +19,7 @@ class Awards(MethodView):
 
     def _initialise_database(self) -> None:
         """
-        Initialise the database and retrieve the data to be passed into the Awards template.
+        Initialise the database and retrieve the data to be processed and then passed into the Awards template.
         :return: None
         """
         weezbase = WeezBase()
