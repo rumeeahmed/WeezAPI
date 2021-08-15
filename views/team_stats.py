@@ -9,7 +9,7 @@ class TeamStats(MethodView):
     """
     def get(self) -> str:
         self._initialise_database()
-        return render_template('team_stats.html', labels=self.labels, data=self.data)
+        return render_template('team_stats.html', heading='TEAM STATS', labels=self.labels, data=self.data)
 
     def _initialise_database(self) -> None:
         """
@@ -51,4 +51,39 @@ class TeamStatsPerGame(MethodView):
     Object that serves the Team Stats Per Game page.
     """
     def get(self):
-        return render_template('team_stats_per_game.html')
+        self._initialise_database()
+        return render_template('team_stats.html', heading='TEAM STATS PER GAME', labels=self.labels, data=self.data)
+
+    def _initialise_database(self) -> None:
+        """
+        Initialise the database and retrieve the data to be processed passed into the Team_Stats template.
+        :return: None
+        """
+        weezbase = WeezBase()
+        self.labels = []
+        self.data = {
+            'Score Per Game': [],
+            'Kills Per Game': [],
+            'Deaths Per Game': [],
+            'Assists Per Game': [],
+            'K/D Per Game': [],
+            'Damage Per Game': [],
+            'Damage Taken Per Game': [],
+            'Headshots Per Game': [],
+            'Revives Per Game': [],
+            'Teams Wiped Per Game': [],
+        }
+
+        documents = weezbase.db.collection('team_stats_per_game').stream()
+        for document in documents:
+            self.labels.append(document.id)
+            self.data['Score Per Game'].append(document.get('team_score_per_game'))
+            self.data['Kills Per Game'].append(document.get('team_kills_per_game'))
+            self.data['Deaths Per Game'].append(document.get('team_deaths_per_game'))
+            self.data['Assists Per Game'].append(document.get('team_assists_per_game'))
+            self.data['K/D Per Game'].append(document.get('team_kd_average_per_game'))
+            self.data['Damage Per Game'].append(document.get('team_damage_per_game'))
+            self.data['Damage Taken Per Game'].append(document.get('team_damage_taken_per_game'))
+            self.data['Headshots Per Game'].append(document.get('team_headshots_per_game'))
+            self.data['Revives Per Game'].append(document.get('team_revives_per_game'))
+            self.data['Teams Wiped Per Game'].append(document.get('teams_wiped_per_game'))

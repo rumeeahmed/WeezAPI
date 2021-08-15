@@ -134,3 +134,18 @@ footer {
 .awards-col{
     margin: 5% 0;
 }
+
+/*
+    Team Stats Page
+*/
+
+.team-stats {
+    text-align: center;
+}
+
+.team-graph {
+    /*width: 50%;*/
+    /*height: 50%;*/
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
