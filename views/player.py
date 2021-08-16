@@ -86,4 +86,4 @@ class Player(MethodView):
     Object that serves a Player and their data.
     """
     def get(self, player_name: str) -> str:
-        pass
+        return render_template('player.html', player_name=player_name)
