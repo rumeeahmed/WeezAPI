@@ -34,7 +34,7 @@
                                             <p><i class="fas fa-star-half-alt home-icon"></i>K/D Ratio: {{ (display_stats[player['player']]['kills'] / display_stats[player['player']]['deaths'])|round(2) }}</p>
                                         </div>
                                         <div class="d-grid gap-2">
-                                            <button class="btn btn-outline-dark btn-lg btn-block card-link" type="button">View {{ player['player'] }}'s Stats</button>
+                                            <button href="{{ url_for('player', player_name=player['player']) }}" class="btn btn-outline-dark btn-lg btn-block card-link" type="button">View {{ player['player'] }}'s Stats</button>
                                         </div>
                                     </div>
                                 </div>
@@ -42,14 +42,16 @@
                         </div>
                     </div>
                 {% endfor %}
-            <button class="carousel-control-prev" type="button" data-bs-target="#players-carousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#players-carousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+                <button class="carousel-control-prev" type="button" data-bs-target="#players-carousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#players-carousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                </div>
+            </div>
         </div>
     </section>
 {% endblock %}
