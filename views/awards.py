@@ -101,5 +101,4 @@ class Awards(MethodView):
                 if awards_data[player_key][award_key] > awards_dict[award_key][0]:
                     awards_dict[award_key][0] = award_value
                     awards_dict[award_key][3] = player_key
-
         return awards_dict

@@ -86,4 +86,47 @@ class Player(MethodView):
     Object that serves a Player and their data.
     """
     def get(self, player_name: str) -> str:
-        return render_template('player.html', player_name=player_name)
+        self._initialise_database(player_name)
+        return render_template('player.html', player_name=player_name, labels=self.labels)
+
+    def _initialise_database(self, player_name: str) -> None:
+        """
+        Initialise the database and retrieve the data to be passed into the Player's template.
+        :return: None
+        """
+        self.labels = []
+        self.data = {
+            'Score': [],
+            'Kills': [],
+            'Deaths': [],
+            'Assists': [],
+            'K/D': [],
+            'Damage': [],
+            'Damage Taken': [],
+            'Headshots': [],
+            'Revives': [],
+            'Teams Wiped': [],
+        }
+
+        weezbase = WeezBase()
+        # Retrieve document ID's
+        documents = weezbase.db.collection('games').stream()
+        for doc in documents:
+            # Create the labels for the graphs
+            self.labels.append(doc.id)
+
+            # Use the document ID to get the collections inside the document.
+            stats = weezbase.db.collection('games').document(doc.id).collection(player_name).document('stats').get()
+            stats = stats.to_dict()
+
+            # Create the data lists for the graphs to display.
+            self.data['Score'].append(stats['score'])
+            self.data['Kills'].append(stats['kills'])
+            self.data['Deaths'].append(stats['deaths'])
+            self.data['Assists'].append(stats['assists'])
+            self.data['K/D'].append(stats['kd'])
+            self.data['Damage'].append(stats['damage'])
+            self.data['Damage Taken'].append(stats['damage_taken'])
+            self.data['Headshots'].append(stats['headshots'])
+            self.data['Revives'].append(stats['revives'])
+            self.data['Teams Wiped'].append(stats['teams_wiped'])
