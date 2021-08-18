@@ -16,7 +16,7 @@ class Players(MethodView):
         Handle the get request made to this route. Return the details of all the players in the Firebase database.
         :return: a HTML template.
         """
-        return render_template('players.html', players=self.players, display_stats=self._process_player_stats())
+        return render_template('players.html', players=self.players, display_stats=self.data)
 
     def _initialise_database(self) -> None:
         """
@@ -25,10 +25,19 @@ class Players(MethodView):
         """
         weezbase = WeezBase()
         player_data = weezbase.db.collection('players').get()
-        self.players = [player.to_dict() for player in player_data]
+
+        self.players = []
+        self.data = {}
+        for player in player_data:
+            # Create a list containing the player names.
+            player = player.to_dict()
+            self.players.append(player['player'])
+
+            # Create a dictionary to hold the players games_played, kills, deaths and assists.
+            self.data[player['player']] = [0, 0, 0, 0]
+
         random.shuffle(self.players)
 
-        self.data = []
         # Retrieve document ID's
         documents = weezbase.db.collection('games').stream()
         for doc in documents:
@@ -37,48 +46,13 @@ class Players(MethodView):
 
             # Get all the data from the collection add the player_name field and append it.
             for col in collections:
-                # Get the stats in question from the database
-                stats = col.document('stats').get()
-                games_played = stats.get('games_played')
-                kills = stats.get('kills')
-                deaths = stats.get('deaths')
-                assists = stats.get('assists')
-
-                # Add each individual stat retrieved into a dict for the player.
-                stats_dict = {
-                    'player_name': col.id,
-                    'games_played': games_played,
-                    'kills': kills,
-                    'deaths': deaths,
-                    'assists': assists,
-                }
-                self.data.append(stats_dict)
-
-    def _process_player_stats(self) -> dict:
-        """
-        Process the raw player data and the statistics together for each player.
-        :return: A dict object containing dictionaries for each player and their total stats.
-        """
-        display_stats = {}
-        # Iterate over each player and then create a dictionary of stats for the player.
-        for player in self.players:
-            player_dict = {
-                'games_played': 0,
-                'kills': 0,
-                'deaths': 0,
-                'assists': 0,
-            }
-
-            # Iterate over all the individual match stats and combine them per player and add them to the dictionary.
-            for data in self.data:
-                if data['player_name'] == player['player']:
-                    player_dict['games_played'] += data['games_played']
-                    player_dict['kills'] += data['kills']
-                    player_dict['deaths'] += data['deaths']
-                    player_dict['assists'] += data['assists']
-
-            display_stats[player['player']] = player_dict
-        return display_stats
+                for player in self.players:
+                    if col.id == player:
+                        stats = col.document('stats').get()
+                        self.data[player][0] += stats.get('games_played')
+                        self.data[player][1] += stats.get('kills')
+                        self.data[player][2] += stats.get('deaths')
+                        self.data[player][3] += stats.get('assists')
 
 
 class Player(MethodView):
