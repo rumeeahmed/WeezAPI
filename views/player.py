@@ -87,7 +87,7 @@ class Player(MethodView):
     """
     def get(self, player_name: str) -> str:
         self._initialise_database(player_name)
-        return render_template('player.html', player_name=player_name, labels=self.labels)
+        return render_template('player.html', player_name=player_name, labels=self.labels, data=self.data)
 
     def _initialise_database(self, player_name: str) -> None:
         """
@@ -112,21 +112,22 @@ class Player(MethodView):
         # Retrieve document ID's
         documents = weezbase.db.collection('games').stream()
         for doc in documents:
-            # Create the labels for the graphs
-            self.labels.append(doc.id)
-
             # Use the document ID to get the collections inside the document.
             stats = weezbase.db.collection('games').document(doc.id).collection(player_name).document('stats').get()
             stats = stats.to_dict()
 
-            # Create the data lists for the graphs to display.
-            self.data['Score'].append(stats['score'])
-            self.data['Kills'].append(stats['kills'])
-            self.data['Deaths'].append(stats['deaths'])
-            self.data['Assists'].append(stats['assists'])
-            self.data['K/D'].append(stats['kd'])
-            self.data['Damage'].append(stats['damage'])
-            self.data['Damage Taken'].append(stats['damage_taken'])
-            self.data['Headshots'].append(stats['headshots'])
-            self.data['Revives'].append(stats['revives'])
-            self.data['Teams Wiped'].append(stats['teams_wiped'])
+            if stats:
+                # Create the labels for the graphs
+                self.labels.append(doc.id)
+
+                # Create the data lists for the graphs to display.
+                self.data['Score'].append(stats['score'])
+                self.data['Kills'].append(stats['kills'])
+                self.data['Deaths'].append(stats['deaths'])
+                self.data['Assists'].append(stats['assists'])
+                self.data['K/D'].append(stats['kd'])
+                self.data['Damage'].append(stats['damage'])
+                self.data['Damage Taken'].append(stats['damage_taken'])
+                self.data['Headshots'].append(stats['headshots'])
+                self.data['Revives'].append(stats['revives'])
+                self.data['Teams Wiped'].append(stats['teams_wiped'])
