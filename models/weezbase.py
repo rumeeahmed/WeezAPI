@@ -31,7 +31,6 @@ class WeezBase:
                 "auth_provider_x509_cert_url": os.environ.get('FIREBASE_AUTH_PROVIDER_URI'),
                 "client_x509_cert_url": os.environ.get('FIREBASE_AUTH_URl'),
             }
-            print(firebase_credentials)
             cred = credentials.Certificate(firebase_credentials)
             firebase_admin.initialize_app(cred)
         self.db = firestore.client()

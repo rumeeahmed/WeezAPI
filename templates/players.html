@@ -27,11 +27,11 @@
                                     <div class="row">
                                         <div class="player-card-text">
                                             <h2 class="medium-heading card-subtitle mb-2">Total Stats</h2>
-                                            <p><i class="fas fa-gamepad home-icon"></i>Games Played: {{ display_stats[player][0] }}</p>
-                                            <p><i class="fas fa-fire home-icon"></i>Kills: {{ display_stats[player][1] }}</p>
-                                            <p><i class="fas fa-skull home-icon"></i>Deaths: {{ display_stats[player][2] }}</p>
-                                            <p><i class="fas fa-hands-helping home-icon"></i>Assists: {{ display_stats[player][3] }}</p>
-                                            <p><i class="fas fa-star-half-alt home-icon"></i>K/D Ratio: {{ (display_stats[player][1] / display_stats[player][2])|round(2) }}</p>
+                                            <p class="player-text"><i class="fas fa-gamepad home-icon"></i>Games Played: {{ display_stats[player][0] }}</p>
+                                            <p class="player-text"><i class="fas fa-fire home-icon"></i>Kills: {{ display_stats[player][1] }}</p>
+                                            <p class="player-text"><i class="fas fa-skull home-icon"></i>Deaths: {{ display_stats[player][2] }}</p>
+                                            <p class="player-text"><i class="fas fa-hands-helping home-icon"></i>Assists: {{ display_stats[player][3] }}</p>
+                                            <p class="player-text"><i class="fas fa-star-half-alt home-icon"></i>K/D Ratio: {{ (display_stats[player][1] / display_stats[player][2])|round(2) }}</p>
                                         </div>
                                         <div class="d-grid gap-2">
                                             <a href="{{ url_for('player', player_name=player) }}" type="submit" class="btn btn-outline-dark btn-lg btn-block card-link" type="button">View {{ player }}'s Stats</a>
