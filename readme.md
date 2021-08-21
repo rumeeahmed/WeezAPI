@@ -20,6 +20,29 @@ element that is being extended into the base template using the Jinja templating
 
 ---
 
+# Player
+
+The player page is a set of bootstrap cards elements contained within the bootstrap carousel element
+which provides a high level overview of the players stats; games_played, kills, deaths, assists and K/D.
+Each card links to a page for the full player stats. A link to this page can be found 
+[here](http://weezingtonsilva.herokuapp.com/players)
+
+Once taken to a players stats a line chart from the Charts.js library will be rendered for the following stats
+over time:
+
+- Score
+- Kills
+- Deaths
+- Assists
+- K/D
+- Damage
+- Damage Taken
+- Headshots
+- Revives
+- Teams Wiped
+
+---
+
 # Awards
 
 The Awards page serves the awards data stored in the firebase database under the `awards` collection. The
