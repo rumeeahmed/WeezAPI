@@ -30,16 +30,16 @@ Each card links to a page for the full player stats. A link to this page can be 
 Once taken to a players stats a line chart from the Charts.js library will be rendered for the following stats
 over time:
 
-- Score
-- Kills
-- Deaths
-- Assists
-- K/D
-- Damage
-- Damage Taken
-- Headshots
-- Revives
-- Teams Wiped
+- `Score`: the score accumulated for the session.
+- `Kills`: number of kills accumulated for the session.
+- `Deaths`: number of deaths accumulated for the session.
+- `Assists`: number of assists accumulated for the session.
+- `K/D`: the kill death ratio for the session.
+- `Damage`: the amount of damage dealt to other players for the session.
+- `Damage Taken`: the amount of damage taken from other players for the session.
+- `Headshots`: the number of headshots accumulated for the session.
+- `Revives`: the number of revives accumulated for the session.
+- `Teams Wiped`: the number of teams wiped accumulated for the session.
 
 ---
 
