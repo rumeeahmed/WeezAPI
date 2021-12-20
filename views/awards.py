@@ -95,7 +95,7 @@ class Awards(MethodView):
             'top_assister': [0, 'Top Assister', 'The player with the most assists.', ''],
             'big_spender': [0, 'Big Spender', 'The player that bought the most items from the shop.', ''],
             'hungry_bitch': [0, 'Hungry Bitch', 'The player that opened the most crates.', ''],
-            'weary_traveller': [0, 'Wearer Traveller', 'The player that covered the most distance.', ''],
+            'weary_traveller': [0, 'Wearey Traveller', 'The player that covered the most distance.', ''],
         }
 
         # Iterate over the player name and its dictionary value in the awards_data dict.
